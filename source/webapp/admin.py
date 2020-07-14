@@ -1,5 +1,5 @@
 from django.contrib import admin
-from webapp.models import Article
+from webapp.models import Article, Comment
 
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -9,4 +9,6 @@ class ArticleAdmin(admin.ModelAdmin):
     fields = ['title', 'author', 'text',  'created_at', 'updated_at', 'category']
     readonly_fields = ['created_at', 'updated_at']
 
+
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Comment)
