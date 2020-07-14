@@ -1,0 +1,80 @@
+[
+{
+  "model": "webapp.article",
+  "pk": 1,
+  "fields": {
+    "title": "Article",
+    "text": "Text",
+    "author": "Me",
+    "category": "other",
+    "created_at": "2020-07-14T19:17:50.952Z",
+    "updated_at": "2020-07-14T19:17:50.952Z"
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 2,
+  "fields": {
+    "title": "Title",
+    "text": "Article",
+    "author": "Me",
+    "category": "food",
+    "created_at": "2020-07-14T19:18:33.783Z",
+    "updated_at": "2020-07-14T19:18:33.783Z"
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 3,
+  "fields": {
+    "title": "Article3",
+    "text": "Text",
+    "author": "She",
+    "category": "it",
+    "created_at": "2020-07-14T19:18:56.943Z",
+    "updated_at": "2020-07-14T19:18:56.944Z"
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 4,
+  "fields": {
+    "title": "Even More\"",
+    "text": "Contr",
+    "author": "Me",
+    "category": "psycho",
+    "created_at": "2020-07-14T19:19:21.865Z",
+    "updated_at": "2020-07-14T19:19:21.865Z"
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 5,
+  "fields": {
+    "title": "main",
+    "text": "text",
+    "author": "Me",
+    "category": "bikers",
+    "created_at": "2020-07-14T19:19:51.597Z",
+    "updated_at": "2020-07-14T19:19:51.597Z"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$04MfCgUSTRFx$Aby0Xq64oKDaGNY4xQLma5UqS24+e0/uNozmdnMj8KE=",
+    "last_login": "2020-07-14T19:16:20.718Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-07-14T19:06:56.896Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
