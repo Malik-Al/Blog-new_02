@@ -9,7 +9,6 @@
 
 {% block content %}
     <h1 class="crearet">{{ article.title }}</h1>
-   <p>Котегория: {{ article.get_cotegory_display }}</p>
     <p>Created by <b>{{ article.author }}</b> at <b>{{  article.created_at|date:'Y-m-d H:i:s'}}</b></p>
     <div class="pre">{{ article.text }}</div>
 {% endblock %}

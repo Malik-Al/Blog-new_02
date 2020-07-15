@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from webapp.forms import ArticleForm
-from webapp.models import Article, CATEGORY_CHOICES
+from webapp.models import Article
 from django.views.generic import TemplateView
 
 
@@ -33,12 +33,11 @@ def article_create_view(request, *args, **kwargs):
             article = Article.objects.create(
                 title=form.cleaned_data['title'],
                 author=form.cleaned_data['author'],
-                text=form.cleaned_data['text'],
-                category=form.cleaned_data['category']
+                text=form.cleaned_data['text']
             )
-            return redirect('article_view', pk=article.pk)
+            return redirect('index', pk=article.pk)
         else:
-            return render(request, 'create.html', context={'form': form,})
+            return render(request, 'create.html', context={'form': form})
 
 
 
@@ -48,8 +47,8 @@ def article_update_view(request, pk):
         form = ArticleForm(data={
             'title': article.title,
             'text': article.text,
-            'author': article.author,
-            'category': article.category
+            'author': article.author
+
         })
         return render(request, 'update.html', context={'form': form, 'article': article})
     elif request.method == 'POST':
@@ -58,9 +57,8 @@ def article_update_view(request, pk):
             article.title = form.cleaned_data['title']
             article.text = form.cleaned_data['text']
             article.author = form.cleaned_data['author']
-            article.category = form.cleaned_data['category']
             article.save()
-            return redirect('article_view', pk=article.pk)
+            return redirect('index', pk=article.pk)
         else:
             return render(request, 'update.html', context={'form': form, 'article': article})
 
