@@ -33,9 +33,10 @@ def article_create_view(request, *args, **kwargs):
             article = Article.objects.create(
                 title=form.cleaned_data['title'],
                 author=form.cleaned_data['author'],
-                text=form.cleaned_data['text']
+                text=form.cleaned_data['text'],
+                category=form.cleaned_data['category']
             )
-            return redirect('index', pk=article.pk)
+            return redirect('article_view', pk=article.pk)
         else:
             return render(request, 'create.html', context={'form': form})
 
@@ -47,7 +48,8 @@ def article_update_view(request, pk):
         form = ArticleForm(data={
             'title': article.title,
             'text': article.text,
-            'author': article.author
+            'author': article.author,
+            'category': article.category_id
 
         })
         return render(request, 'update.html', context={'form': form, 'article': article})
@@ -57,8 +59,9 @@ def article_update_view(request, pk):
             article.title = form.cleaned_data['title']
             article.text = form.cleaned_data['text']
             article.author = form.cleaned_data['author']
+            article.category = form.cleaned_data['category']
             article.save()
-            return redirect('index', pk=article.pk)
+            return redirect('article_view', pk=article.pk)
         else:
             return render(request, 'update.html', context={'form': form, 'article': article})
 
