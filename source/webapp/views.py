@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views import View
+
 from webapp.forms import ArticleForm
 from webapp.models import Article
 from django.views.generic import TemplateView
@@ -7,7 +9,11 @@ from django.views.generic import TemplateView
 
 class IndexView(TemplateView):
     template_name = 'index.html'
-    extra_context = {'articles': Article.objects.all()}
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['articles'] = Article.objects.all()
+        return context
 
 
 
@@ -23,11 +29,12 @@ class ArticleView(TemplateView):
 
 
 
-def article_create_view(request, *args, **kwargs):
-    if request.method == "GET":
+class  ArticleCreateView(View):
+    def get(self, request, *args, **kwargs):
         form = ArticleForm()
         return render(request, 'create.html', context={'form': form})
-    elif request.method =='POST':
+
+    def post(self, request, *args, **kwargs):
         form = ArticleForm(data=request.POST)
         if form.is_valid():
             article = Article.objects.create(
@@ -42,9 +49,10 @@ def article_create_view(request, *args, **kwargs):
 
 
 
-def article_update_view(request, pk):
-    article = get_object_or_404(Article, pk=pk)
-    if request.method == 'GET':
+class ArticleUpdateView(View):
+    def get(self, request, *args, **kwargs):
+        article_pk = kwargs.get('pk')
+        article = get_object_or_404(Article, pk=article_pk)
         form = ArticleForm(data={
             'title': article.title,
             'text': article.text,
@@ -53,7 +61,10 @@ def article_update_view(request, pk):
 
         })
         return render(request, 'update.html', context={'form': form, 'article': article})
-    elif request.method == 'POST':
+
+    def post(self, request, *args, **kwargs):
+        article_pk = kwargs.get('pk')
+        article = get_object_or_404(Article, pk=article_pk)
         form = ArticleForm(data=request.POST)
         if form.is_valid():
             article.title = form.cleaned_data['title']
@@ -67,11 +78,14 @@ def article_update_view(request, pk):
 
 
 
-
-def article_delete_view(request, pk):
-    article = get_object_or_404(Article, pk=pk)
-    if request.method == 'GET':
+class ArticleDeleteView(View):
+    def get(self, request, *args, **kwargs):
+        article_pk = kwargs.get('pk')
+        article = get_object_or_404(Article, pk=article_pk)
         return render(request, 'delete.html', context={'article': article})
-    elif request.method == 'POST':
+
+    def post(self, request, *args, **kwargs):
+        article_pk = kwargs.get('pk')
+        article = get_object_or_404(Article, pk=article_pk)
         article.delete()
         return redirect('index')

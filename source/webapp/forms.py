@@ -8,4 +8,7 @@ class ArticleForm(forms.Form):
     author = forms.CharField(max_length=40, required=True, label='Author')
     text = forms.CharField(max_length=3000, required=True, label='Text',
                            widget=widgets.Textarea)
-    category = forms.ModelChoiceField(queryset=Category.objects.all(),required=False, label='Category', empty_label=None)
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), required=False, label='Category', empty_label=None)
+
+
+
