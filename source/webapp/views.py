@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 
-from webapp.forms import ArticleForm
-from webapp.models import Article
+from webapp.forms import ArticleForm, CommentForm
+from webapp.models import Article, Comment
 from django.views.generic import TemplateView
 
 
@@ -89,3 +89,38 @@ class ArticleDeleteView(View):
         article = get_object_or_404(Article, pk=article_pk)
         article.delete()
         return redirect('index')
+
+
+
+
+
+
+class CommentIndexView(TemplateView):
+    template_name = 'comment/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.all()
+        return context
+
+
+
+
+
+class CommentCreateView(View):
+    def get(self, request, *args, **kwargs):
+        form = CommentForm()
+        return render(request, 'comment/create.html', context={'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = CommentForm(data=request.POST)
+        if form.is_valid():
+            comment = Comment.objects.create(
+                author=form.cleaned_data['author'],
+                text=form.cleaned_data['text'],
+                article=form.cleaned_data['article'],
+
+            )
+            return redirect('article_view', pk=comment.article.pk)
+        else:
+            return render(request, 'comment/create.html', context={'form': form})
