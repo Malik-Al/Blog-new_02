@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Are you sure you want to delete - {{ comment }}?</h1>
+    <form method="POST"  class="text-center" action="{% url 'comment_delete' comment.pk %}">
+        {% csrf_token %}
+        <p><input type="submit" class="btn btn-danger" value="Yes"></p>
+        <p><a href="{% url 'index' %}" class="no btn btn-primary">No</a></p>
+    </form>
+{% endblock %} 
