@@ -6,7 +6,7 @@
 
 <h1 class="crearet"> Create Comment</h1>
 <form method="POST" action="{% url "comment_add" %}">
-   {% include 'partial/article_form.html' with button_text='Create' %}
+   {% include 'partial/form.html' with button_text='Create' %}
 </form>
 {% endblock %}
 

@@ -10,7 +10,6 @@
         <p>{{ comment.article }}</p>
         <p>{{ comment.author }}</p>
         <p>{{ comment.text }}</p>
-{#        <p><a href="{% url 'article_view' comment.article.pk %}"></a></p>#}
         <a href="{% url 'comment_update' comment.pk %}">Edit</a>
         <a href="{% url 'comment_delete' comment.pk %}">Delete</a>
         <hr>
