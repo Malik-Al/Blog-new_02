@@ -5,15 +5,20 @@ from webapp.forms import CommentForm
 from webapp.models import Comment
 from django.views.generic import TemplateView
 
+from .base_views import ListView
 
 
-class CommentIndexView(TemplateView):
+
+
+class CommentIndexView(ListView):
     template_name = 'comment/index.html'
+    model = Comment
+    context_key = 'comments'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['comments'] = Comment.objects.all()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['comments'] = Comment.objects.all()
+    #     return context
 
 
 
