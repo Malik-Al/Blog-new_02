@@ -3,9 +3,9 @@ from django.views import View
 
 from webapp.forms import ArticleForm
 from webapp.models import Article
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
-from .base_views import ListView
+# from .base_views import ListView
 
 
 # class IndexView(TemplateView):
@@ -18,12 +18,12 @@ from .base_views import ListView
 
 
 class IndexView(ListView):
-    template_name = 'article/index.html'
+    context_object_name = 'articles'
     model = Article
-    context_key = 'articles'
-
-    def get_objects(self):
-        return super().get_objects().order_by('-created_at')
+    template_name = 'article/index.html'
+    ordering = ['-created_at']
+    paginate_by = 3
+    paginate_orphans = 1
 
 
 
@@ -56,6 +56,11 @@ class  ArticleCreateView(View):
             return redirect('article_view', pk=article.pk)
         else:
             return render(request, 'article/create.html', context={'form': form})
+
+
+
+
+
 
 
 
