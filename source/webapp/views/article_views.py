@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 
@@ -26,7 +27,14 @@ class ArticleView(TemplateView):
         article = get_object_or_404(Article, pk=article_pk)
         context['article'] = article
         context['form'] = CommentForm()
-        context['comments'] = article.comments.order_by('-created_at')
+        comments = article.comments.order_by('-created_at')
+        paginator = Paginator(comments, 3, 0)
+        page_numder = self.request.GET.get('page', 1)
+        page = paginator.get_page(page_numder)
+        context['paginator'] = paginator
+        context['page_obj'] = page
+        context['comments'] = page.object_list
+        context['is_paginated'] = page.has_other_pages()
         return context
 
 
