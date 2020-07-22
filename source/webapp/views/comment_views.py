@@ -7,38 +7,27 @@ from django.views.generic import ListView
 
 
 
-
-
-
 class CommentIndexView(ListView):
     template_name = 'comment/index.html'
     model = Comment
     context_object_name = 'comments'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['comments'] = Comment.objects.all()
-    #     return context
-
 
 class CommentForArticleCreateView(View):
-    def get(self, request, *args, **kwargs):
-        form = ArticleCommentForm()
-        return render(request, 'comment/create.html', context={'form': form})
-
     def post(self, request, *args, **kwargs):
         form = ArticleCommentForm(data=request.POST)
         article_pk = kwargs.get('pk')
+        article = get_object_or_404(Article, pk=article_pk)
         if form.is_valid():
             Comment.objects.create(
                 author=form.cleaned_data['author'],
                 text=form.cleaned_data['text'],
-                article=get_object_or_404(Article, pk=article_pk)
+                article=article
 
             )
             return redirect('article_view', pk=article_pk)
         else:
-            return render(request, 'comment/create.html', context={'form': form})
+            return render(request, 'article/article.html', context={'form': form, 'article': article})
 
 
 
