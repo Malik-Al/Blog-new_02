@@ -10,6 +10,7 @@
         <p>{{ comment.article }}</p>
         <p>{{ comment.author }}</p>
         <p>{{ comment.text }}</p>
+        <p>Created_at: {{ comment.created_at|date:'d.n.Y H:i:s'}}</p>
         <a href="{% url 'comment_update' comment.pk %}">Edit</a>
         <a href="{% url 'comment_delete' comment.pk %}">Delete</a>
         <hr>
