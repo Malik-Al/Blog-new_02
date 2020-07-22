@@ -22,4 +22,14 @@
         <a href="?page={{ page_obj.paginator.num_pages }}">В конец &raquo;</a>
     </span>
 </form>
+    <div>
+        {% for page in paginator.page_range %}
+            {% if page_obj.number == page %}
+                <span class="page-active">{{ page }}</span>
+            {% else %}
+                <a href="?page={{ page }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+    </div>
 </div>
