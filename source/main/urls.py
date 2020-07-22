@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from webapp.views import IndexView, ArticleCreateView, ArticleView, ArticleUpdateView, ArticleDeleteView, \
-    CommentCreateView, CommentIndexView, CommentUpdateView, CommentDeleteView
+    CommentCreateView, CommentIndexView, CommentUpdateView, CommentDeleteView, CommentForArticleCreateView
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
@@ -29,5 +29,6 @@ urlpatterns = [
     path('comment/', CommentIndexView.as_view(), name='comment_index'),
     path('comment/<int:pk>/edit/', CommentUpdateView.as_view(), name='comment_update'),
     path('comment/<int:pk>/delete/', CommentDeleteView.as_view(), name='comment_delete'),
+    path('article/<int:pk>/add-comment/', CommentForArticleCreateView.as_view(), name='article_comment_create'),
     path('admin/', admin.site.urls),
 ]
