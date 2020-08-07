@@ -87,50 +87,6 @@ class  ArticleCreateView(View):
             return render(request, 'article/create.html', context={'form': form})
 
 
-
-#
-# class ArticleUpdateView(View):
-#     def get(self, request, *args, **kwargs):
-#         article_pk = kwargs.get('pk')
-#         article = get_object_or_404(Article, pk=article_pk)
-#         form = ArticleForm(data={
-#             'title': article.title,
-#             'text': article.text,
-#             'author': article.author,
-#             'category': article.category_id
-#
-#         })
-#         return render(request, 'article/update.html', context={'form': form, 'article': article})
-#
-#     def post(self, request, *args, **kwargs):
-#         article_pk = kwargs.get('pk')
-#         article = get_object_or_404(Article, pk=article_pk)
-#         form = ArticleForm(data=request.POST)
-#         if form.is_valid():
-#             article.title = form.cleaned_data['title']
-#             article.text = form.cleaned_data['text']
-#             article.author = form.cleaned_data['author']
-#             article.category = form.cleaned_data['category']
-#             article.save()
-#             return redirect('article_view', pk=article.pk)
-#         else:
-#             return render(request, 'article/update.html', context={'form': form, 'article': article})
-#
-
-
-# class ArticleDeleteView(View):
-#     def get(self, request, *args, **kwargs):
-#         article_pk = kwargs.get('pk')
-#         article = get_object_or_404(Article, pk=article_pk)
-#         return render(request, 'article/delete.html', context={'article': article})
-#
-#     def post(self, request, *args, **kwargs):
-#         article_pk = kwargs.get('pk')
-#         article = get_object_or_404(Article, pk=article_pk)
-#         article.delete()
-#         return redirect('index')
-
-
 class ArticleUpdateView(UpdateView):
     model = Article
     template_name = 'article/update.html'
@@ -139,8 +95,6 @@ class ArticleUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('article_view', kwargs={'pk': self.object.pk})
-
-
 
 
 
