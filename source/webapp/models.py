@@ -10,6 +10,8 @@ class Article(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Время изменения')
     category = models.ForeignKey('webapp.Category', on_delete=models.PROTECT, null=True, blank=True,
                                  verbose_name='Категория ',  related_name='articles')
+    tags = models.ManyToManyField('webapp.Tag', related_name='articles', through='webapp.ArticleTag',
+                                  through_fields=('article', 'tag'), blank=True)
 
     def __str__(self):
         return "{}. {}".format(self.pk, self.title)
@@ -34,3 +36,21 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=31, verbose_name='Тег')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
+
+    def __str__(self):
+        return self.name
+
+
+class ArticleTag(models.Model):
+    article = models.ForeignKey('webapp.Article', related_name='article_tags', on_delete=models.CASCADE,
+                                verbose_name='Статья')
+    tag = models.ForeignKey('webapp.Tag', related_name='tag_articles', on_delete=models.CASCADE, verbose_name='Тег')
+
+    def __str__(self):
+        return "{} | {}".format(self.article, self.tag)
