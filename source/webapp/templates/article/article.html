@@ -33,7 +33,7 @@
 
 
     <h3>Добавить комментарий</h3>
-        <form action="{% url 'article_comment_create' article.pk %}" method="post">
+        <form action="{% url 'webapp:article_comment_create' article.pk %}" method="post">
             {% include 'partial/form.html' with button_text='Add' %}
         </form>
 {% endblock %}

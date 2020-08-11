@@ -206,3 +206,22 @@ body {
 .comment p {
     margin: 0 0 5px;
 }
+
+
+.menu-right {
+
+    float: right;
+
+}
+
+
+
+.menu {
+
+    ...
+
+    display: block;
+
+    ...
+
+}

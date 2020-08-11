@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
@@ -7,7 +8,18 @@ from django.views import View
 
 from webapp.forms import ArticleForm, CommentForm, SimpleSearchForm
 from webapp.models import Article
-from django.views.generic import TemplateView, ListView, DeleteView, UpdateView
+from django.views.generic import TemplateView, ListView, DeleteView, UpdateView, CreateView
+
+
+
+
+
+
+
+
+
+
+
 
 
 class IndexView(ListView):
@@ -68,33 +80,33 @@ class ArticleView(TemplateView):
 
 
 
-class  ArticleCreateView(View):
-    def get(self, request, *args, **kwargs):
-        form = ArticleForm()
-        return render(request, 'article/create.html', context={'form': form})
+class ArticleCreateView(CreateView):
+    template_name = 'article/create.html'
+    form_class = ArticleForm
+    model = Article
 
-    def post(self, request, *args, **kwargs):
-        form = ArticleForm(data=request.POST)
-        if form.is_valid():
-            article = Article.objects.create(
-                title=form.cleaned_data['title'],
-                author=form.cleaned_data['author'],
-                text=form.cleaned_data['text'],
-                category=form.cleaned_data['category']
-            )
-            return redirect('article_view', pk=article.pk)
-        else:
-            return render(request, 'article/create.html', context={'form': form})
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().dispatch(request, *args, **kwargs)
+        return redirect('accounts:login')
+
+    def get_success_url(self):
+        return reverse('webapp:article_view', kwargs={'pk': self.object.pk})
 
 
-class ArticleUpdateView(UpdateView):
+
+
+
+
+
+class ArticleUpdateView(LoginRequiredMixin, UpdateView):
     model = Article
     template_name = 'article/update.html'
     form_class = ArticleForm
     context_object_name = 'article'
 
     def get_success_url(self):
-        return reverse('article_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:article_view', kwargs={'pk': self.object.pk})
 
 
 
@@ -103,4 +115,7 @@ class ArticleDeleteView(DeleteView):
     template_name = 'article/delete.html'
     model = Article
     context_key = 'article'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('webapp:index')
+
+
+

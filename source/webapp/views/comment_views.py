@@ -4,7 +4,7 @@ from django.views import View
 
 from webapp.forms import CommentForm, ArticleCommentForm
 from webapp.models import Comment, Article
-from django.views.generic import ListView, DeleteView, UpdateView
+from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 
 
 class CommentIndexView(ListView):
@@ -25,30 +25,22 @@ class CommentForArticleCreateView(View):
                 article=article
 
             )
-            return redirect('article_view', pk=article_pk)
+            return redirect('webapp:article_view', pk=article_pk)
         else:
             return render(request, 'article/article.html', context={'form': form, 'article': article})
 
 
 
 
-class CommentCreateView(View):
-    def get(self, request, *args, **kwargs):
-        form = CommentForm()
-        return render(request, 'comment/create.html', context={'form': form})
 
-    def post(self, request, *args, **kwargs):
-        form = CommentForm(data=request.POST)
-        if form.is_valid():
-            comment = Comment.objects.create(
-                author=form.cleaned_data['author'],
-                text=form.cleaned_data['text'],
-                article=form.cleaned_data['article'],
+class CommentCreateView(CreateView):
+    template_name = 'article/create.html'
+    form_class = CommentForm
+    model = Comment
 
-            )
-            return redirect('comment_index', pk=comment.article.pk)
-        else:
-            return render(request, 'comment/create.html', context={'form': form})
+    def get_success_url(self):
+        return reverse('webapp:comment_index', kwargs={'pk': self.object.pk})
+
 
 
 
@@ -60,7 +52,8 @@ class CommentUpdateView(UpdateView):
     context_object_name = 'comment'
 
     def get_success_url(self):
-        return reverse('article_view', kwargs={'pk': self.object.article.pk})
+        return reverse('webapp:article_view', kwargs={'pk': self.object.article.pk})
+
 
 
 
@@ -72,7 +65,7 @@ class CommentDeleteView(DeleteView):
         return self.delete(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('article_view', kwargs={'pk': self.object.article.pk})
+        return reverse('webapp:article_view', kwargs={'pk': self.object.article.pk})
 
 
 
