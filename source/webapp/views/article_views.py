@@ -70,7 +70,7 @@ class ArticleView(TemplateView):
 
 
 
-class ArticleCreateView(CreateView):
+class ArticleCreateView(LoginRequiredMixin, CreateView):
     template_name = 'article/create.html'
     form_class = ArticleForm
     model = Article
@@ -101,7 +101,7 @@ class ArticleUpdateView(LoginRequiredMixin, UpdateView):
 
 
 
-class ArticleDeleteView(DeleteView):
+class ArticleDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'article/delete.html'
     model = Article
     context_key = 'article'

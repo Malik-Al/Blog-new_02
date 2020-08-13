@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
@@ -33,7 +34,7 @@ class CommentForArticleCreateView(View):
 
 
 
-class CommentCreateView(CreateView):
+class CommentCreateView(LoginRequiredMixin, CreateView):
     template_name = 'article/create.html'
     form_class = CommentForm
     model = Comment
@@ -45,7 +46,7 @@ class CommentCreateView(CreateView):
 
 
 
-class CommentUpdateView(UpdateView):
+class CommentUpdateView(LoginRequiredMixin, UpdateView):
     model = Comment
     template_name = 'comment/update.html'
     form_class = ArticleCommentForm
@@ -58,7 +59,7 @@ class CommentUpdateView(UpdateView):
 
 
 
-class CommentDeleteView(DeleteView):
+class CommentDeleteView(LoginRequiredMixin, DeleteView):
     model = Comment
 
     def get(self, request, *args, **kwargs):
