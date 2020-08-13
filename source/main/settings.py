@@ -124,3 +124,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = reverse_lazy("accounts:login")
+
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '4a7d18351ee372'
+EMAIL_HOST_PASSWORD = '7bbfdebc46e996'
+EMAIL_PORT = '2525'

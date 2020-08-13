@@ -1,13 +1,12 @@
 from django.contrib.auth.models import User
 from django import forms
-
-
-
+from django.core.exceptions import ValidationError
 
 
 class UserCreationForm(forms.ModelForm):
     password = forms.CharField(label="Пароль", strip=False, widget=forms.PasswordInput)
     password_confirm = forms.CharField(label="Подтвердите пароль", widget=forms.PasswordInput, strip=False)
+    email = forms.EmailField(label='Email', required=True)
 
     def clean_password_confirm(self):
         password = self.cleaned_data.get("password")
@@ -23,7 +22,15 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        try:
+            User.objects.get(email=email)
+            raise ValidationError('User with this email already exists', code='user_email_exists')
+        except User.DoesNotExist:
+            return email
+
     class Meta:
         model = User
-        fields = ['username', 'password', 'password_confirm']
+        fields = ['username', 'password', 'password_confirm', 'email']
 
