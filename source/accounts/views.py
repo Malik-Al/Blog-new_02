@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from accounts.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 def login_view(request):
@@ -22,4 +24,46 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('webapp:index')
+
+
+
+def register_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('webapp:index')
+    else:
+        form = UserCreationForm()
+    return render(request, 'register.html', context={'form': form})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

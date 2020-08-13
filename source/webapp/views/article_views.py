@@ -4,19 +4,9 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.utils.http import urlencode
-from django.views import View
-
 from webapp.forms import ArticleForm, CommentForm, SimpleSearchForm
 from webapp.models import Article
 from django.views.generic import TemplateView, ListView, DeleteView, UpdateView, CreateView
-
-
-
-
-
-
-
-
 
 
 
