@@ -6,9 +6,9 @@
     "title": "Article",
     "text": "Text",
     "author": "Me",
-    "category": "other",
     "created_at": "2020-07-14T19:17:50.952Z",
-    "updated_at": "2020-07-14T19:17:50.952Z"
+    "updated_at": "2020-07-15T17:48:19.864Z",
+    "category": null
   }
 },
 {
@@ -18,9 +18,9 @@
     "title": "Title",
     "text": "Article",
     "author": "Me",
-    "category": "food",
     "created_at": "2020-07-14T19:18:33.783Z",
-    "updated_at": "2020-07-14T19:18:33.783Z"
+    "updated_at": "2020-07-14T19:18:33.783Z",
+    "category": null
   }
 },
 {
@@ -30,9 +30,9 @@
     "title": "Article3",
     "text": "Text",
     "author": "She",
-    "category": "it",
     "created_at": "2020-07-14T19:18:56.943Z",
-    "updated_at": "2020-07-14T19:18:56.944Z"
+    "updated_at": "2020-07-14T19:18:56.944Z",
+    "category": null
   }
 },
 {
@@ -42,9 +42,9 @@
     "title": "Even More\"",
     "text": "Contr",
     "author": "Me",
-    "category": "psycho",
     "created_at": "2020-07-14T19:19:21.865Z",
-    "updated_at": "2020-07-14T19:19:21.865Z"
+    "updated_at": "2020-07-14T19:19:21.865Z",
+    "category": null
   }
 },
 {
@@ -54,9 +54,226 @@
     "title": "main",
     "text": "text",
     "author": "Me",
-    "category": "bikers",
     "created_at": "2020-07-14T19:19:51.597Z",
-    "updated_at": "2020-07-14T19:19:51.597Z"
+    "updated_at": "2020-07-14T19:19:51.597Z",
+    "category": null
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 6,
+  "fields": {
+    "title": "11",
+    "text": "tesss",
+    "author": "Me",
+    "created_at": "2020-07-14T20:59:52.327Z",
+    "updated_at": "2020-07-14T20:59:52.327Z",
+    "category": null
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 7,
+  "fields": {
+    "title": "test",
+    "text": "gikfyktk",
+    "author": "er",
+    "created_at": "2020-07-15T12:43:35.986Z",
+    "updated_at": "2020-07-15T12:43:35.987Z",
+    "category": null
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 8,
+  "fields": {
+    "title": "test",
+    "text": "stgww45",
+    "author": "Me",
+    "created_at": "2020-07-15T12:44:00.051Z",
+    "updated_at": "2020-07-15T12:44:00.051Z",
+    "category": null
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 9,
+  "fields": {
+    "title": "ARTGSEHERJHE",
+    "text": "uyetyueye",
+    "author": "Meuy",
+    "created_at": "2020-07-15T12:44:46.804Z",
+    "updated_at": "2020-07-15T12:47:09.752Z",
+    "category": null
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 10,
+  "fields": {
+    "title": "\u041c\u043e\u0440\u043e\u0436\u0435\u043d\u043e\u0435",
+    "text": "\u0432\u0430\u0444\u0435\u043b\u044c\u043d\u0430\u044f",
+    "author": "\u043c\u043e\u0435",
+    "created_at": "2020-07-15T15:52:56.574Z",
+    "updated_at": "2020-07-15T15:52:56.574Z",
+    "category": 4
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 11,
+  "fields": {
+    "title": "\u041c\u043e\u0440\u043e\u0436\u0435\u043d\u043e\u0435",
+    "text": "\u0432\u0430\u0444\u0435\u043b\u044c\u043d\u0430\u044f",
+    "author": "\u043c\u043e\u0435",
+    "created_at": "2020-07-15T15:53:34.882Z",
+    "updated_at": "2020-07-15T15:53:34.882Z",
+    "category": 4
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 12,
+  "fields": {
+    "title": "teat57\u043357\u044857\u044857",
+    "text": "\u043d\u0433\u0443\u0433\u04437\u0433\u044857",
+    "author": "er",
+    "created_at": "2020-07-15T15:54:01.925Z",
+    "updated_at": "2020-07-15T15:54:01.925Z",
+    "category": 1
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 13,
+  "fields": {
+    "title": "TTTTTTTTTTTTTT",
+    "text": "ttttttttttttttttttttttttt",
+    "author": "ttttttt",
+    "created_at": "2020-07-15T15:55:00.798Z",
+    "updated_at": "2020-07-15T15:55:00.798Z",
+    "category": 1
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 16,
+  "fields": {
+    "title": "teat124",
+    "text": "terdv",
+    "author": "me1",
+    "created_at": "2020-07-22T09:11:27.887Z",
+    "updated_at": "2020-07-22T09:11:27.887Z",
+    "category": 3
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 27,
+  "fields": {
+    "title": "Article",
+    "text": "text",
+    "author": "Unknown",
+    "created_at": "2020-08-07T22:16:36.114Z",
+    "updated_at": "2020-08-07T22:16:36.114Z",
+    "category": 3
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 28,
+  "fields": {
+    "title": "Title",
+    "text": "ttext",
+    "author": "Unknown",
+    "created_at": "2020-08-07T22:17:09.034Z",
+    "updated_at": "2020-08-07T22:17:09.034Z",
+    "category": 3
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 29,
+  "fields": {
+    "title": "test",
+    "text": "text",
+    "author": "Title",
+    "created_at": "2020-08-07T22:18:20.917Z",
+    "updated_at": "2020-08-07T22:18:20.917Z",
+    "category": 2
+  }
+},
+{
+  "model": "webapp.article",
+  "pk": 30,
+  "fields": {
+    "title": "test",
+    "text": "wwww",
+    "author": "Unknown",
+    "created_at": "2020-08-11T20:26:40.028Z",
+    "updated_at": "2020-08-11T20:26:40.028Z",
+    "category": 1
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 3,
+  "fields": {
+    "article": 5,
+    "text": "Comment 1447474740000000000000000000000000000000000000000000",
+    "author": "\u0410\u043d\u043e\u043d\u0438\u043c",
+    "created_at": "2020-07-14T20:40:30.007Z",
+    "updated_at": "2020-08-11T21:05:54.784Z"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 6,
+  "fields": {
+    "article": 6,
+    "text": "4525324",
+    "author": "\u0410\u043d\u043e\u043d\u0438\u043c",
+    "created_at": "2020-07-20T20:20:07.360Z",
+    "updated_at": "2020-07-21T19:49:31.719Z"
+  }
+},
+{
+  "model": "webapp.comment",
+  "pk": 33,
+  "fields": {
+    "article": 28,
+    "text": "text",
+    "author": "\u0410\u043d\u043e\u043d\u0438\u043c",
+    "created_at": "2020-08-07T22:17:20.700Z",
+    "updated_at": "2020-08-07T22:17:20.700Z"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 1,
+  "fields": {
+    "name": "\u0414\u043e\u043c"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 2,
+  "fields": {
+    "name": "IT"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 3,
+  "fields": {
+    "name": "\u0416\u0438\u0432\u043e\u0442\u043d\u044b\u0439"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 4,
+  "fields": {
+    "name": "\u0415\u0434\u0430"
   }
 },
 {
@@ -64,7 +281,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$04MfCgUSTRFx$Aby0Xq64oKDaGNY4xQLma5UqS24+e0/uNozmdnMj8KE=",
-    "last_login": "2020-07-14T19:16:20.718Z",
+    "last_login": "2020-08-13T20:30:44.148Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -73,6 +290,60 @@
     "is_staff": true,
     "is_active": true,
     "date_joined": "2020-07-14T19:06:56.896Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$kdQP9nvsfjHK$aXO+JFUEIwTIE9Jn3MsJPjrrbJDScPHTkZ/PGGsGrsk=",
+    "last_login": "2020-08-13T20:52:17.043Z",
+    "is_superuser": false,
+    "username": "admin2",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-13T10:45:14.844Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$3uRLGEzcrjJV$RfD5kFW3hVubBrpEkpgWxAyV6CFk8j83UVkS/WD2kyE=",
+    "last_login": "2020-08-13T20:30:06.768Z",
+    "is_superuser": false,
+    "username": "admin3",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-13T10:46:22.509Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$BhlVrUKdvBvt$uiuZS2L+SCkuwVYIsFpkkwxZeGcSDL+ZoDQs3KVFRWE=",
+    "last_login": "2020-08-13T20:28:25.928Z",
+    "is_superuser": false,
+    "username": "admin1",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-13T20:28:25.673Z",
     "groups": [],
     "user_permissions": []
   }

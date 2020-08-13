@@ -25,11 +25,12 @@
            <li><a href="{% url 'webapp:index' %}">Home</a></li>
            <li><a href="{% url 'webapp:comment_index'  %}">List Comment</a></li>
          {% csrf_token %}
-       {% if user.is_authenticated %}
+       {% if request.user.is_authenticated %}
+           <li>Привет {{ request.user }}!</li>
            <li class="menu-right"><a href="{% url 'accounts:logout' %}" class="nav-link">Log Out</a></li>
        {% else %}
            <li class="menu-right"><a href="{% url 'accounts:login' %}" class="nav-link">Log In</a></li>
-           <li class="menu-right"><a href="{% url 'accounts:register' %}" class="nav-link">Sing Up</a></li>
+           <li class="menu-right"><a href="{% url 'accounts:register' %}" class="nav-link" >Sing Up</a></li>
        {% endif %}
            {% block menu %}{% endblock %}
        </ul>
