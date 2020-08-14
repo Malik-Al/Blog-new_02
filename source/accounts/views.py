@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
@@ -82,17 +83,14 @@ class UserDetailView(DetailView):
 
 
 
-class UserChangeView(UpdateView):
+class UserChangeView(UserPassesTestMixin, UpdateView):
     model = User
     template_name = 'user_update.html'
     form_class = UserChangeForm
     context_object_name = 'user_obj'
 
-    def dispatch(self, request, *args, **kwargs):
-        user = self.get_object()
-        if request.user == user:
-            return super().dispatch(request, *args, **kwargs)
-        return HttpResponseForbidden('403 Forbidden')
+    def test_func(self):
+        return self.get_object() == self.request.user
 
     def get_success_url(self):
         return reverse('accounts:user_detail', kwargs={'pk': self.object.pk})
