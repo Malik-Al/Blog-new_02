@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
-
 from accounts.forms import UserCreationForm
 from django.contrib.auth.models import User
-
 from accounts.models import Token
+from main.settings import HOST_NAME
+
 
 
 def login_view(request):
@@ -43,7 +43,7 @@ def register_view(request):
                 is_active=False)
             user = form.save()
             token = Token.objects.create(user=user)
-            activation_url = reverse('accounts:user_activate') + '?token={}'.format(token)
+            activation_url = HOST_NAME + reverse('accounts:user_activate') + '?token={}'.format(token)
 
             user_1.email_user('Регистрация на сайте localhost',
                               'Для активаций перейдите по ссылке:{}'.format(activation_url))
@@ -52,6 +52,23 @@ def register_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'register.html', context={'form': form})
+
+
+
+def user_activate(request):
+    token_value = request.GET.get('token')
+    try:
+        token = Token.objects.get(token=token_value)
+        user = token.user
+        user.is_active = True
+        user.save()
+        token.delete()
+        login(request, user)
+        return redirect('webapp:index')
+    except Token.DoesNotExist:
+        return redirect('webapp:index')
+
+
 
 
 
