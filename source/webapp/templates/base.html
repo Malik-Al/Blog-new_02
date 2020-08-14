@@ -26,7 +26,7 @@
            <li><a href="{% url 'webapp:comment_index'  %}">List Comment</a></li>
          {% csrf_token %}
        {% if request.user.is_authenticated %}
-           <li>Привет {{ request.user }}!</li>
+           <li>Привет<a href="{% url 'accounts:user_detail' request.user.pk %}">{{ request.user }}</a>!</li>
            <li class="menu-right"><a href="{% url 'accounts:logout' %}" class="nav-link">Log Out</a></li>
        {% else %}
            <li class="menu-right"><a href="{% url 'accounts:login' %}" class="nav-link">Log In</a></li>
