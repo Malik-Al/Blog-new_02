@@ -8,8 +8,12 @@
     {% endif %}
 {% endblock %}
 {% block content %}
+    {% if user_obj.profile.avatar %}
+            <img class="avatar" src="{{ user_obj.profile.avatar.url }}">
+    {% endif %}
     <h1>Profile: {{ user_obj.username }}</h1>
     <p>First Name: {{ user_obj.first_name }}</p>
     <p>Last Name: {{ user_obj.last_name }}</p>
     <p>Email: {{ user_obj.email }}</p>
+    <p>Birth Date: {{ user_obj.profile.birth_date|date:'d.m.Y' }}</p>
 {% endblock %}

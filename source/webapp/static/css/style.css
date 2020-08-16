@@ -225,3 +225,18 @@ body {
     ...
 
 }
+
+
+.avatar {
+
+    display: inline-block;
+
+    float: left;
+
+    width: 250px;
+
+    height: auto;
+
+    margin-right: 20px;
+
+}
