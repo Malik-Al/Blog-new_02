@@ -38,12 +38,38 @@ class UserCreationForm(forms.ModelForm):
 
 
 class UserChangeForm(forms.ModelForm):
+    avatar = forms.ImageField(label='Аватар', required=False)
+    birth_date = forms.DateField(label='День рождения', input_formats=['%Y-%m-%d', '%d.%m.%Y'], required=False)
+
+    def get_initial_for_field(self, field, field_name):
+        if field_name in self.Meta.profile_fields:
+            return getattr(self.instance.profile, field_name)
+        return super().get_initial_for_field(field, field_name)
+
+    def save(self, commit=True):
+        user = super().save(commit)
+        self.save_profile(commit)
+        return user
+
+    def save_profile(self, commit=True):
+        profile = self.instance.profile
+        for field in self.Meta.profile_fields:
+            setattr(profile, field, self.cleaned_data[field])
+
+        if not profile.avatar:
+            profile.avatar = None
+
+        if commit:
+            profile.save()
+
+
+
 
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
-        # labels = {'first_name': 'Имя', 'last_name': 'Фамилия', 'email': 'Email'}
-
+        profile_fields = ['avatar', 'birth_date']
+        labels = {'first_name': 'Имя', 'last_name': 'Фамилия', 'email': 'Email'}
 
 
 

@@ -6,7 +6,7 @@ from django.views.generic import DetailView, UpdateView
 
 from accounts.forms import UserCreationForm, UserChangeForm, UserChangePasswordForm
 from django.contrib.auth.models import User
-from accounts.models import Token
+from accounts.models import Token, Profile
 from main.settings import HOST_NAME
 
 
@@ -25,6 +25,8 @@ def register_view(request):
             user_1.email_user('Регистрация на сайте localhost',
                               'Для активаций перейдите по ссылке:{}'.format(activation_url))
             login(request, user)
+            user.save()
+            Profile.objects.create(user=user)
             return redirect('webapp:index')
     else:
         form = UserCreationForm()
